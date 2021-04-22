@@ -8,27 +8,37 @@ class Car {
 
     turnOn() {
         if (this.isEngineOn) {
-            console.log(`variklis ${this.name} jau ijungtas`);
+            console.log(`ka dirbi?! nori sudeginti starteri?! (${this.name})`);
         } else {
-        this.isEngineOn = true;
-        console.log(`${this.name} variklis ijungtas`);
-        }   
+            this.isEngineOn = true;
+            console.log(`${this.name} engine is turned ON!`);
+        }
     }
+
     turnOff() {
-        this.isEngineOn = false;
+        if (this.isEngineOn) {
+            this.isEngineOn = false;
+            console.log(`${this.name} engine is turned OFF!`);
+        } else {
+            console.log(`tai kad varyklis isjungtas... :/ (${this.name})`);
+        }
     }
+
     statusReport() {
-        //Car name: engine is [on/off]
-        console.log(`${this.name}: car is ${this.color} and it's engine is ${this.isEngineOn ? 'on' : 'off'}`);
+        // Car name: car is [color] and it's engine is [on/off].
+        console.log(`${this.name}: car is ${this.color} and it's engine is ${this.isEngineOn ? 'on' : 'off'}.`);
     }
+
     changeColor(newColor) {
         this.color = newColor;
     }
+
     drive(distance) {
         if (!this.isEngineOn) {
-            console.log(`${this.name} negali vaziuoti kol nejungei variklio`);
-            return
+            console.log(`${this.name}: masina negali vaziuoti, kol neijungei varyklio.`);
+            return;
         }
+
         this.distance += distance;
         console.log(`${this.name}: drived extra ${distance}km (total: ${this.distance}).`);
     }
